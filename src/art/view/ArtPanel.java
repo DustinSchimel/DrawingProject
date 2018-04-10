@@ -99,4 +99,106 @@ public class ArtPanel extends JPanel
 		edgeSlider.setPaintLabels(true);
 	}
 	
+	private void setupPanel()
+	{
+		this.setLayout(appLayout);
+		this.setBackground(Color.DARK_GRAY);
+		this.setPreferredSize(new Dimension(1024, 768));	//Used for display in WindowBuilder
+		//this.add(canvas);
+		
+		buttonPanel.setPreferredSize(new Dimension(200, 450));
+		buttonPanel.add(triangleButton);
+		buttonPanel.add(rectangleButton);
+		buttonPanel.add(ellipseButton);
+		buttonPanel.add(polygonButton);
+		buttonPanel.add(clearButton);
+		buttonPanel.add(saveButton);
+		buttonPanel.add(colorButton);
+		
+		sliderPanel.setPreferredSize(new Dimension(250, 450));
+		sliderPanel.add(scaleSlider);
+		sliderPanel.add(edgeSlider);
+		
+		this.add(buttonPanel);
+		this.add(sliderPanel);
+	}
+	
+	private void setupLayout()
+	{
+		//appLayout.putConstraint(SpringLayout.NORTH, canvas, 50, SpringLayout.NORTH, this);
+		//appLayout.putConstraint(SpringLayout.WEST, canvas, 50, SpringLayout.WEST, this);
+		//appLayout.putConstraint(SpringLayout.WEST, buttonPanel, 40, SpringLayout.EAST, canvas);
+		appLayout.putConstraint(SpringLayout.WEST, sliderPanel, 20, SpringLayout.EAST, buttonPanel);
+		appLayout.putConstraint(SpringLayout.NORTH, sliderPanel, 0, SpringLayout.NORTH, buttonPanel);
+		//appLayout.putConstraint(SpringLayout.NORTH, buttonPanel, 0, SpringLayout.NORTH, canvas);
+	}
+	
+	private void setupListeners()
+	{
+		rectangleButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+//				Rectangle rectangle = createRectangle();
+//				canvas.addShape(rectangle);
+			}
+		});
+		
+		triangleButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+//				Polygon triangle = createPolygon(3);
+//				canvas.addShape(triangle);
+			}
+		});
+		
+		polygonButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+//				Polygon polygon = createPolygon(currentEdgeCount);
+//				canvas.addShape(polygon);
+			}
+		});
+		
+		ellipseButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+//				Ellipse2D ellipse = createEllipse();
+//				canvas.addShape(ellipse);
+			}
+		});
+		
+//		clearButton.addActionListener(click -> canvas.clear());	//Quick way to make listeners, good for one liners
+		
+//		saveButton.addActionListener(click -> canvas.save());
+		
+//		colorButton.addActionListener(click -> canvas.changeBackground());
+		
+		scaleSlider.addChangeListener(new ChangeListener()
+		{
+			@Override
+			public void stateChanged(ChangeEvent e)
+			{
+				if (!scaleSlider.getValueIsAdjusting())
+				{
+					currentScale = scaleSlider.getValue();
+				}
+			}
+		});
+		
+		edgeSlider.addChangeListener(new ChangeListener()
+		{
+			@Override
+			public void stateChanged(ChangeEvent e)
+			{
+				if (!edgeSlider.getValueIsAdjusting())
+				{
+					currentEdgeCount = edgeSlider.getValue();
+				}
+			}
+		});
+	}
 }
