@@ -26,7 +26,7 @@ public class ArtPanel extends JPanel
 	private ArtController app;
 	
 	private SpringLayout appLayout;
-	//private ShapeCanvas canvas;
+	private ShapeCanvas canvas;
 	private JPanel buttonPanel;
 	private JPanel sliderPanel;
 	private JSlider scaleSlider;
@@ -53,7 +53,7 @@ public class ArtPanel extends JPanel
 		scaleSlider = new JSlider(MINIMUM_SCALE, MAXIMUM_SCALE);
 		edgeSlider = new JSlider(MINIMUM_EDGE, MAXIMUM_EDGE);
 		
-		//canvas = new ShapeCanvas(app);
+		canvas = new ShapeCanvas(app);
 		sliderPanel = new JPanel();
 		buttonPanel = new JPanel(new GridLayout(0, 1));
 		
@@ -104,7 +104,7 @@ public class ArtPanel extends JPanel
 		this.setLayout(appLayout);
 		this.setBackground(Color.DARK_GRAY);
 		this.setPreferredSize(new Dimension(1024, 768));	//Used for display in WindowBuilder
-		//this.add(canvas);
+		this.add(canvas);
 		
 		buttonPanel.setPreferredSize(new Dimension(200, 450));
 		buttonPanel.add(triangleButton);
@@ -125,12 +125,12 @@ public class ArtPanel extends JPanel
 	
 	private void setupLayout()
 	{
-		//appLayout.putConstraint(SpringLayout.NORTH, canvas, 50, SpringLayout.NORTH, this);
-		//appLayout.putConstraint(SpringLayout.WEST, canvas, 50, SpringLayout.WEST, this);
-		//appLayout.putConstraint(SpringLayout.WEST, buttonPanel, 40, SpringLayout.EAST, canvas);
+		appLayout.putConstraint(SpringLayout.NORTH, canvas, 50, SpringLayout.NORTH, this);
+		appLayout.putConstraint(SpringLayout.WEST, canvas, 50, SpringLayout.WEST, this);
+		appLayout.putConstraint(SpringLayout.WEST, buttonPanel, 40, SpringLayout.EAST, canvas);
 		appLayout.putConstraint(SpringLayout.WEST, sliderPanel, 20, SpringLayout.EAST, buttonPanel);
 		appLayout.putConstraint(SpringLayout.NORTH, sliderPanel, 0, SpringLayout.NORTH, buttonPanel);
-		//appLayout.putConstraint(SpringLayout.NORTH, buttonPanel, 0, SpringLayout.NORTH, canvas);
+		appLayout.putConstraint(SpringLayout.NORTH, buttonPanel, 0, SpringLayout.NORTH, canvas);
 	}
 	
 	private boolean coinFlip()
@@ -205,8 +205,8 @@ public class ArtPanel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-//				Rectangle rectangle = createRectangle();
-//				canvas.addShape(rectangle);
+				Rectangle rectangle = createRectangle();
+				canvas.addShape(rectangle);
 			}
 		});
 		
@@ -214,8 +214,8 @@ public class ArtPanel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-//				Polygon triangle = createPolygon(3);
-//				canvas.addShape(triangle);
+				Polygon triangle = createPolygon(3);
+				canvas.addShape(triangle);
 			}
 		});
 		
@@ -223,8 +223,8 @@ public class ArtPanel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-//				Polygon polygon = createPolygon(currentEdgeCount);
-//				canvas.addShape(polygon);
+				Polygon polygon = createPolygon(currentEdgeCount);
+				canvas.addShape(polygon);
 			}
 		});
 		
@@ -232,16 +232,16 @@ public class ArtPanel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-//				Ellipse2D ellipse = createEllipse();
-//				canvas.addShape(ellipse);
+				Ellipse2D ellipse = createEllipse();
+				canvas.addShape(ellipse);
 			}
 		});
 		
-//		clearButton.addActionListener(click -> canvas.clear());	//Quick way to make listeners, good for one liners
+		clearButton.addActionListener(click -> canvas.clear());	//Quick way to make listeners, good for one liners
 		
-//		saveButton.addActionListener(click -> canvas.save());
+		saveButton.addActionListener(click -> canvas.save());
 		
-//		colorButton.addActionListener(click -> canvas.changeBackground());
+		colorButton.addActionListener(click -> canvas.changeBackground());
 		
 		scaleSlider.addChangeListener(new ChangeListener()
 		{
