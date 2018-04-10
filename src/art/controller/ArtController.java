@@ -1,6 +1,6 @@
 package art.controller;
 
-public class Controller
+public class ArtController
 {
 
 }
