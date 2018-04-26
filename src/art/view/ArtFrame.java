@@ -21,5 +21,6 @@ public class ArtFrame extends JFrame
 		this.setContentPane(appPanel);
 		this.setTitle("Creating modern art in Java");
 		this.setVisible(true);
+		this.setResizable(false);
 	}
 }
