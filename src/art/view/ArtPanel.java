@@ -60,13 +60,13 @@ public class ArtPanel extends JPanel
 		sliderPanel = new JPanel();
 		buttonPanel = new JPanel(new GridLayout(0, 1));
 		
-		triangleButton = new JButton("add triangle");
-		rectangleButton = new JButton("add rectangle");
-		ellipseButton = new JButton("add ellipse");
-		polygonButton = new JButton("add polygon");
-		clearButton = new JButton("clear image");
-		saveButton = new JButton("save image");
-		colorButton = new JButton("change color");
+		triangleButton = new JButton("Add triangle");
+		rectangleButton = new JButton("Add rectangle");
+		ellipseButton = new JButton("Add ellipse");
+		polygonButton = new JButton("Add polygon");
+		clearButton = new JButton("Clear image");
+		saveButton = new JButton("Save image");
+		colorButton = new JButton("Change color");
 		
 		setupSliders();
 		setupPanel();
